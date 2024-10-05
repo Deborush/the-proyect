@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Exopets Marketplace</title>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img src="img/image-removebg-preview (2).png"  alt="Exopets Logo" class="h-16 mr-4">
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="flex">
+                    <input type="text" id="search-input" class="border border-gray-300 rounded-l-lg p-2" placeholder="Buscar">
+                    <button id="search-btn" class="bg-gray-800 text-white rounded-r-lg px-4 bg-yellow-400">Buscar</button>
+                </div>
+                <a href="sign-up" class="bg-yellow-400 text-gray-800 py-2 px-4 rounded hover:bg-yellow-500">Sign Up</a>
+                <div class="relative">
+                    <button class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" >
+                        </svg>
+                    </button>
+                </div>
+                <a href="marketplace" class="hover:text-yellow-400">Marketplace</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Welcome Section -->
+        <section id="home" class="py-16 text-center">
+            <h2 class="text-4xl font-semibold mb-4">Bienvenido a Exopets</h2>
+            <img src="https://images.unsplash.com/photo-1672397892693-c08f955f7b66?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Exopets Bienvenida" class="mx-auto mb-6 h-60 rounded-lg">
+            <p class="text-lg mb-4">Exopets es tu espacio para compartir, comprar y aprender sobre animales exóticos. Aquí, los criadores y compradores pueden conectarse, intercambiar consejos y disfrutar de una comunidad apasionada por los exóticos.</p>
+        </section>
+        <section id="forum" class="py-16 bg-white">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-semibold mb-8 text-center">Conecta</h2>
+                <div class="space-y-6">
+                    <!-- Example -->
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                        <p><strong>Harry Potter:</strong>¿Cómo alimentar una tarántula?<em>Brachypelma</em>?<p>
+                        <button class="mt-4 bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded">Responder</button>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                        <p><strong>Mal Uma:</strong> Si tienes un gecko leopardo o estás pensando en adoptar uno, ¡asegúrate de proporcionarle un ambiente adecuado! Estos reptiles son nocturnos, así que necesitarás una terrario con áreas de escondite y temperaturas que oscilen entre 26-30 °C (78-86 °F) en la zona cálida y alrededor de 21-24 °C (70-75 °F) en la zona fría.</p>
+                        <button class="mt-4 bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded">Responder</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="marketplace" class="py-16 bg-gray-100">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-semibold mb-8 text-center">Marketplace</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Product Card Example -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                        <img src="https://media.istockphoto.com/id/985663144/es/foto/primer-plano-de-ara%C3%B1a-tar%C3%A1ntula-ara%C3%B1a.jpg?s=612x612&w=0&k=20&c=hbBnvsTs_NUpURc1V0HNh5M80oiXbml2K6Od6EwmNNk=" alt="Brachypelma" class="mx-auto mb-4 rounded-lg">
+                        <p class="text-xl font-semibold">Tarántula Brachypelma</p>
+                        <p class="text-gray-700 mb-4">Precio: $120</p>
+                        <button class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-yellow-400">Comprar</button>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                        <img src="https://media.istockphoto.com/id/174937723/es/foto/zophobas-larvae-superworm.jpg?s=1024x1024&w=is&k=20&c=eu1TaaKI3oOBhdXJepcmEWzzhnJ3KNZuqn8j5Lr6gb4=" class="mx-auto mb-4 rounded-lg">
+                        <p class="text-xl font-semibold">Gusanos de la harina</p>
+                        <p class="text-gray-700 mb-4">Precio: $200</p>
+                        <button class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-yellow-400">Comprar</button>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                        <img src="https://images.unsplash.com/photo-1585095595274-aeffce35511a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHl0aG9uJTIwYm9sYSUyMGJhbmFuYXxlbnwwfHwwfHx8MA%3D%3D" alt="Python bola banana" class="mx-auto mb-4 rounded-lg">
+                        <p class="text-xl font-semibold">Python bola banana</p>
+                        <p class="text-gray-700 mb-4">Precio: $350</p>
+                        <button class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-yellow-400">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</main>
