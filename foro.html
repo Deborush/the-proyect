@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Exopets Marketplace</title>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="img/image-removebg-preview (2).png" alt="Exopets Logo" class="h-16 mr-4">
+            </div>
+
+            <div class="flex items-center space-x-4">
+                <div class="flex">
+                    <input type="text" id="search-input" class="border border-gray-300 rounded-l-lg p-2" placeholder="Buscar">
+                    <button id="search-btn" class="bg-gray-800 text-white rounded-r-lg px-4 bg-yellow-400">Buscar</button>
+                </div>
+                <a href="signUp.html" class="bg-yellow-400 text-gray-800 py-2 px-4 rounded hover:bg-yellow-500">Sign Up</a>
+                <div class="relative">
+                    <button class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/></svg>
+                    </button>
+                </div>
+                <a href="marketplace.html" class="hover:text-yellow-400">Marketplace</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="new-post" class="py-8 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Sube tu propio post</h2>
+            <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                <!-- Moved the image upload input to the top -->
+                <input type="file" id="post-image" class="border border-gray-300 rounded-lg p-2 w-full mb-4" accept="image/*">
+                <input type="text" id="post-title" class="border border-gray-300 rounded-lg p-2 w-full mb-4" placeholder="Título del post">
+                <textarea id="post-content" class="border border-gray-300 rounded-lg p-2 w-full mb-4" rows="4" placeholder="Escribe tu contenido..."></textarea>
+                <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded mt-4" onclick="submitPost()">Enviar Post</button>
+            </div>
+            <div id="new-posts" class="mt-6"></div>
+        </div>
+    </section>
+    
+
+    <section id="forum" class="py-16 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Conecta</h2>
+            <div class="space-y-6">
+                <!-- Example of forum post -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <p><strong>Harry Potter:</strong> ¿Cómo alimentar una tarántula <em>Brachypelma</em>?</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded" onclick="toggleResponse('response1')">Responder</button>
+                        <button class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-yellow-400">❤️</button>
+                    </div>
+                    <div id="response1" class="hidden mt-4">
+                        <textarea id="responseText1" class="border border-gray-300 rounded-lg p-2 w-full" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded mt-2" onclick="sendResponse('responseText1', 'postedResponse1')">Enviar</button>
+                        <div id="postedResponse1" class="mt-4 text-gray-700"></div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <p><strong>Mal Uma:</strong> Si tienes un gecko leopardo o estás pensando en adoptar uno, ¡asegúrate de proporcionarle un ambiente adecuado!</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded" onclick="toggleResponse('response2')">Responder</button>
+                        <button class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-yellow-400">❤️</button>
+                    </div>
+                    <div id="response2" class="hidden mt-4">
+                        <textarea id="responseText2" class="border border-gray-300 rounded-lg p-2 w-full" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded mt-2" onclick="sendResponse('responseText2', 'postedResponse2')">Enviar</button>
+                        <div id="postedResponse2" class="mt-4 text-gray-700"></div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <p><strong>ArácnidoAmante:</strong> ¿Cuáles son las mejores plantas para un terrario de tarántulas?</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded" onclick="toggleResponse('response3')">Responder</button>
+                        <button class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-yellow-400">❤️</button>
+                    </div>
+                    <div id="response3" class="hidden mt-4">
+                        <textarea id="responseText3" class="border border-gray-300 rounded-lg p-2 w-full" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded mt-2" onclick="sendResponse('responseText3', 'postedResponse3')">Enviar</button>
+                        <div id="postedResponse3" class="mt-4 text-gray-700"></div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <p><strong>ReptilManiaco:</strong> ¿Qué tipo de iluminación es ideal para un terrario de gecko leopardo?</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded" onclick="toggleResponse('response4')">Responder</button>
+                        <button class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-yellow-400">❤️</button>
+                    </div>
+                    <div id="response4" class="hidden mt-4">
+                        <textarea id="responseText4" class="border border-gray-300 rounded-lg p-2 w-full" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded mt-2" onclick="sendResponse('responseText4', 'postedResponse4')">Enviar</button>
+                        <div id="postedResponse4" class="mt-4 text-gray-700"></div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <p><strong>ReptilSabio:</strong> Un tip: Los pitones son reptiles muy curiosos y pueden ser excelentes mascotas.</p>
+                    <div class="mt-4 flex space-x-4">
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded" onclick="toggleResponse('response5')">Responder</button>
+                        <button class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-yellow-400">❤️</button>
+                    </div>
+                    <div id="response5" class="hidden mt-4">
+                        <textarea id="responseText5" class="border border-gray-300 rounded-lg p-2 w-full" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+                        <button class="bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded mt-2" onclick="sendResponse('responseText5', 'postedResponse5')">Enviar</button>
+                        <div id="postedResponse5" class="mt-4 text-gray-700"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Exopets Marketplace. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        function submitPost() {
+            // Functionality to submit the post (e.g., send to server or display below)
+            const title = document.getElementById("post-title").value;
+            const content = document.getElementById("post-content").value;
+            const image = document.getElementById("post-image").files[0];
+
+            // Display post information below (just for demo purposes)
+            const newPostContainer = document.getElementById("new-posts");
+            const newPostDiv = document.createElement("div");
+            newPostDiv.className = "bg-gray-100 p-6 rounded-lg shadow-lg mb-4";
+            newPostDiv.innerHTML = `<h3 class="text-xl font-bold">${title}</h3><p>${content}</p>`;
+            if (image) {
+                const img = document.createElement("img");
+                img.src = URL.createObjectURL(image);
+                img.className = "mt-2";
+                newPostDiv.appendChild(img);
+            }
+            newPostContainer.appendChild(newPostDiv);
+
+            // Clear input fields
+            document.getElementById("post-title").value = '';
+            document.getElementById("post-content").value = '';
+            document.getElementById("post-image").value = '';
+        }
+
+        function toggleResponse(responseId) {
+            const responseDiv = document.getElementById(responseId);
+            responseDiv.classList.toggle("hidden");
+        }
+
+        function sendResponse(responseTextId, postedResponseId) {
+            const responseText = document.getElementById(responseTextId).value;
+
+            // Display the response below the original post
+            const postedResponseDiv = document.getElementById(postedResponseId);
+            postedResponseDiv.innerHTML = `<p>${responseText}</p>`;
+            postedResponseDiv.classList.remove("hidden");
+
+            // Clear response textarea
+            document.getElementById(responseTextId).value = '';
+        }
+    </script>
+
+</body>
+</html>
