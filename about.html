@@ -22,11 +22,33 @@
                 </div>
                 <a href="signUp.html" class="bg-yellow-400 text-gray-800 py-2 px-4 rounded hover:bg-yellow-500">Sign Up</a>
                 <div class="relative">
-                    <!--notis-->
-                    <button class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/></svg>
+                    <!-- Notifications -->
+                <div class="relative">
+                    <button id="notification-btn" class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600">
+                        <svg xmlns="https://cf-vectorizer-live.s3.amazonaws.com/uploads/2nM3pmfskgYQog1hNaBah0jEnwk/2nM3vWR3qwcRdlUxbvTHC7YJh8o.png" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                            <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/>
                         </svg>
                     </button>
+    
+                    <!-- Dropdown de Notificaciones -->
+                    <div id="notification-dropdown" style="display: none; position: absolute; right: 0; top: 50px; background-color: white; width: 300px; max-height: 400px; overflow-y: scroll; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                        <div class="notification-item p-4 border-b border-gray-200">
+                            <strong>Nuevo mensaje</strong>: Has recibido un mensaje nuevo de Juan.
+                        </div>
+                        <div class="notification-item p-4 border-b border-gray-200">
+                            <strong>Compra exitosa</strong>: Tu compra de alimento para tarántulas fue completada.
+                        </div>
+                        <div class="notification-item p-4 border-b border-gray-200">
+                            <strong>Notificación general</strong>: Hay una nueva actualización en la sección de foros.
+                        </div>
+                        <div class="notification-item p-4 border-b border-gray-200">
+                            <strong>Nuevo mensaje</strong>: María te ha enviado un mensaje.
+                        </div>
+                        <div class="notification-item p-4">
+                            <strong>Compra exitosa</strong>: Se ha confirmado la compra de un terrario.
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <a href="marketplace.html" class="hover:text-yellow-400">Marketplace</a>
             </div>
@@ -73,5 +95,26 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        
+        const notificationBtn = document.getElementById('notification-btn');
+                const notificationDropdown = document.getElementById('notification-dropdown');
+
+                notificationBtn.addEventListener('click', function() {
+                    if (notificationDropdown.style.display === 'none') {
+                        notificationDropdown.style.display = 'block';
+                    } else {
+                        notificationDropdown.style.display = 'none';
+                    }
+                });
+
+                // Cerrar el dropdown si se hace clic fuera de él
+                window.addEventListener('click', function(event) {
+                    if (!notificationBtn.contains(event.target) && !notificationDropdown.contains(event.target)) {
+                        notificationDropdown.style.display = 'none';
+                    }
+                });
+    </script>
 </body>
 </html>

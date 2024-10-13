@@ -4,62 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>Exopets - Login</title>
+    <title>Document</title>
 </head>
-<body class="bg-gray-50">
+<body>
+
+    <!-- Header -->
     <header class="bg-gray-800 text-white py-4">
         <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
             <div class="flex items-center">
                 <img src="img/image-removebg-preview (2).png" alt="Exopets Logo" class="h-16 mr-4">
             </div>
 
+            <!-- Search, Sign Up, Notifications, Marketplace Links -->
             <div class="flex items-center space-x-4">
+                <!-- Search Bar -->
                 <div class="flex">
                     <input type="text" id="search-input" class="border border-gray-300 rounded-l-lg p-2" placeholder="Buscar">
-                    <button id="search-btn" class="bg-gray-800 text-white rounded-r-lg px-4 bg-yellow-400">Buscar</button>
+                    <button id="search-btn" class="bg-yellow-400 text-white rounded-r-lg px-4 hover:bg-yellow-500">Buscar</button>
                 </div>
-                <a href="signUp.html" class="bg-yellow-400 text-gray-800 py-2 px-4 rounded hover:bg-yellow-500">Sign Up</a>
+                
+                <!-- Profile Icon -->
+                <a href="profile.html" class="hover:text-yellow-400">
+                    <img src="img/b86ef970-94db-49e3-9b6e-b3679ece57d6-removebg-preview.png" alt="Profile Icon" class="h-16 w-16 rounded-full">
+                </a>
+
+                <!-- Notifications -->
+                <div class="relative">
+                    <button class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600">
+                        <svg xmlns="https://cf-vectorizer-live.s3.amazonaws.com/uploads/2nM3pmfskgYQog1hNaBah0jEnwk/2nM3vWR3qwcRdlUxbvTHC7YJh8o.png" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                            <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Marketplace Link -->
                 <a href="marketplace.html" class="hover:text-yellow-400">Marketplace</a>
             </div>
         </div>
     </header>
 
-    <main class="container mx-auto py-10">
-        <h1 class="text-3xl font-bold text-center mb-8">¿Cómo quieres iniciar sesión?</h1>
+    <!-- Main Content -->
+    <div class="container mx-auto flex justify-center items-center py-8">
+        <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+            <div id="login-form-container">
+                <h2 class="text-2xl font-bold mb-6 text-center">Iniciar Sesión</h2>
+                <form id="login-form" class="flex flex-col">
+                    <label for="login-username" class="block mb-2 font-medium">Nombre de Usuario:</label>
+                    <input type="text" id="login-username" class="border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring focus:ring-yellow-400" placeholder="Introduce tu nombre de usuario" required>
+                    <button type="submit" class="bg-yellow-400 text-gray-800 py-2 rounded-lg hover:bg-yellow-500 transition duration-200">Iniciar Sesión</button>
+                </form>
+                <p class="mt-4 text-center text-gray-600">¿No tienes una cuenta? <a href="#register" class="text-yellow-500 hover:underline" onclick="toggleForms()">Regístrate aquí</a></p>
+            </div>
 
-        <div class="flex justify-center space-x-8">
-            <button id="vendedorBtn" class="bg-yellow-400 text-gray-800 py-4 px-8 rounded-lg hover:bg-yellow-500 ">
-                Soy Vendedor
-            </button>
-            <button id="compradorBtn" class="bg-yellow-400 text-gray-800 py-4 px-8 rounded-lg hover:bg-yellow-500">
-                Soy Comprador/Entusiasta
-            </button>
+            <div id="register" class="hidden">
+                <h2 class="text-2xl font-bold mb-6 text-center">Registro de Usuario</h2>
+                <form id="signup-form" class="flex flex-col">
+                    <label class="block mb-2 font-medium">¿Cómo deseas registrarte?</label>
+                    <select id="userType" class="border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring focus:ring-yellow-400" onchange="selectUserType(this.value)">
+                        <option value="fanatico">Como Fanático</option>
+                        <option value="vendedor">Como Vendedor</option>
+                    </select>
+
+                    <label for="signup-username" class="block mb-2 font-medium">Nombre de Usuario:</label>
+                    <input type="text" id="signup-username" class="border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring focus:ring-yellow-400" placeholder="Introduce tu nombre de usuario" required>
+
+                    <label for="email" class="block mb-2 font-medium">Email:</label>
+                    <input type="email" id="email" class="border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring focus:ring-yellow-400" placeholder="usuario@ejemplo.com" required>
+
+                    <div id="vendedor-fields" class="hidden">
+                        <label for="businessName" class="block mb-2 font-medium">Nombre del Negocio:</label>
+                        <input type="text" id="businessName" class="border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring focus:ring-yellow-400" placeholder="Nombre del negocio" required>
+
+                        <label for="legalDocuments" class="block mb-2 font-medium">Documentos Legales:</label>
+                        <input type="file" id="legalDocuments" class="border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring focus:ring-yellow-400" required>
+                    </div>
+
+                    <button type="submit" class="bg-yellow-400 text-gray-800 py-2 rounded-lg hover:bg-yellow-500 transition duration-200">Registrar</button>
+                </form>
+                <p class="mt-4 text-center text-gray-600">¿Ya tienes una cuenta? <a href="#login" class="text-yellow-500 hover:underline" onclick="toggleForms()">Inicia sesión aquí</a></p>
+            </div>
         </div>
-
-        <div id="form-container" class="mt-10 mx-auto w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
-            <form id="formmm">
-                <h2 id="formTitle" class="text-2xl font-semibold mb-6"></h2>
-                <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
-                    <input type="text" id="name" name="name" class="mt-1 block w-full border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md">
-                </div>
-                <div class="mb-4">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-                </div>
-
-                <div id="extraFields" class="mb-4"></div>
-
-                <!-- Botón de enviar -->
-                <button type="submit" class="w-full bg-yellow-400 text-gray-800 py-2 px-4 rounded hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-500">Registrarse</button>
-            </form>
+    </div>
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Exopets. All rights reserved.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="about.html" class="hover:text-yellow-400">About Us</a>
+                <a href="contact.html" class="hover:text-yellow-400">Contact</a>
+                <a href="privacy.html" class="hover:text-yellow-400">Privacy Policy</a>
+            </div>
         </div>
-    </main>
-
+    </footer>
     <script src="main.js"></script>
 </body>
 </html>

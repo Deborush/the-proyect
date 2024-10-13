@@ -8,39 +8,62 @@
 </head>
 <body class="bg-gray-50">
 
-    <!-- Header -->
-    <header class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <div class="flex items-center">
-                <img src="img/image-removebg-preview (2).png" alt="Exopets Logo" class="h-16 mr-4">
-            </div>
-
-            <!-- Search, Sign Up, Notifications, Marketplace Links -->
-            <div class="flex items-center space-x-4">
-                <!-- Search Bar -->
-                <div class="flex">
-                    <input type="text" id="search-input" class="border border-gray-300 rounded-l-lg p-2" placeholder="Buscar">
-                    <button id="search-btn" class="bg-yellow-400 text-white rounded-r-lg px-4 hover:bg-yellow-500">Buscar</button>
-                </div>
-                
-                <!-- Sign Up Button -->
-                <a href="signUp.html" class="bg-yellow-400 text-gray-800 py-2 px-4 rounded hover:bg-yellow-500">Sign Up</a>
-
-                <!-- Notifications -->
-                <div class="relative">
-                    <button class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
-                            <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/>
-                        </svg>
-                    </button>
-                </div>
-                
-                <!-- Marketplace Link -->
-                <a href="marketplace.html" class="hover:text-yellow-400">Marketplace</a>
-            </div>
+<!-- Header -->
+<header class="bg-gray-800 text-white py-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <img src="img/image-removebg-preview (2).png" alt="Exopets Logo" class="h-16 mr-4">
         </div>
-    </header>
+
+        <!-- Search, Sign Up, Notifications, Marketplace Links -->
+        <div class="flex items-center space-x-4">
+            <!-- Search Bar -->
+            <div class="flex">
+                <input type="text" id="search-input" class="border border-gray-300 rounded-l-lg p-2" placeholder="Buscar">
+                <button id="search-btn" class="bg-yellow-400 text-white rounded-r-lg px-4 hover:bg-yellow-500">Buscar</button>
+            </div>
+            
+            <!-- Sign Up Button -->
+            <a href="signUp.html" class="bg-yellow-400 text-gray-800 py-2 px-4 rounded hover:bg-yellow-500">Sign Up</a>
+
+            <!-- Profile Icon -->
+            <a href="profile.html" class="hover:text-yellow-400">
+                <img src="img/b86ef970-94db-49e3-9b6e-b3679ece57d6-removebg-preview.png" alt="Profile Icon" class="h-16 w-16 rounded-full">
+            </a>
+
+            <!-- Notifications -->
+            <div class="relative">
+                <button id="notification-btn" class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600">
+                    <svg xmlns="https://cf-vectorizer-live.s3.amazonaws.com/uploads/2nM3pmfskgYQog1hNaBah0jEnwk/2nM3vWR3qwcRdlUxbvTHC7YJh8o.png" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/>
+                    </svg>
+                </button>
+
+                <div id="notification-dropdown" style="display: none; position: absolute; right: 0; top: 50px; background-color: white; width: 300px; max-height: 400px; overflow-y: scroll; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <div class="notification-item p-4 border-b border-gray-200">
+                        <strong>Nuevo mensaje</strong>: Has recibido un mensaje nuevo de Juan.
+                    </div>
+                    <div class="notification-item p-4 border-b border-gray-200">
+                        <strong>Compra exitosa</strong>: Tu compra de alimento para tarántulas fue completada.
+                    </div>
+                    <div class="notification-item p-4 border-b border-gray-200">
+                        <strong>Notificación general</strong>: Hay una nueva actualización en la sección de foros.
+                    </div>
+                    <div class="notification-item p-4 border-b border-gray-200">
+                        <strong>Nuevo mensaje</strong>: María te ha enviado un mensaje.
+                    </div>
+                    <div class="notification-item p-4">
+                        <strong>Compra exitosa</strong>: Se ha confirmado la compra de un terrario.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Marketplace Link -->
+            <a href="marketplace.html" class="hover:text-yellow-400">Marketplace</a>
+        </div>
+    </div>
+</header>
 
     <!-- Main Content -->
     <main>
@@ -56,9 +79,6 @@
             <div class="container mx-auto">
                 <h2 class="text-3xl font-semibold mb-8 text-center">Conecta</h2>
                 <div class="space-y-6">
-                    <!-- Forum Posts -->
-
-                    <!-- Modal para responder -->
                     <div id="reply-modal" class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 hidden">
                         <div class="bg-white p-6 rounded-lg shadow-lg w-1/2">
                             <h3 class="text-2xl font-semibold mb-4">Escribir respuesta</h3>
@@ -116,6 +136,25 @@
                         replyModal.classList.add('hidden');
                     });
                 });
+
+                            const notificationBtn = document.getElementById('notification-btn');
+                const notificationDropdown = document.getElementById('notification-dropdown');
+
+                notificationBtn.addEventListener('click', function() {
+                    if (notificationDropdown.style.display === 'none') {
+                        notificationDropdown.style.display = 'block';
+                    } else {
+                        notificationDropdown.style.display = 'none';
+                    }
+                });
+
+                // Cerrar el dropdown si se hace clic fuera de él
+                window.addEventListener('click', function(event) {
+                    if (!notificationBtn.contains(event.target) && !notificationDropdown.contains(event.target)) {
+                        notificationDropdown.style.display = 'none';
+                    }
+                });
+
                 </script>
             </div>
         </section>

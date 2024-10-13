@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Perfil de Usuario</title>
+    <style>
+        #chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            background-color: #f3f3f3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .chat-message {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 10px;
+        }
+        .user-message {
+            background-color: #c7f9cc;
+            text-align: right;
+        }
+        .received-message {
+            background-color: #d1d1d1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img src="img/image-removebg-preview (2).png" alt="Exopets Logo" class="h-16 mr-4">
+            </div>
+
+            <!-- Search, Sign Up, Notifications, Marketplace Links -->
+            <div class="flex items-center space-x-4">
+                <!-- Search Bar -->
+                <div class="flex">
+                    <input type="text" id="search-input" class="border border-gray-300 rounded-l-lg p-2" placeholder="Buscar">
+                    <button id="search-btn" class="bg-yellow-400 text-white rounded-r-lg px-4 hover:bg-yellow-500">Buscar</button>
+                </div>
+                
+                <!-- Profile -->
+                <a href="profile.html" class="hover:text-yellow-400">
+                    <img src="img/b86ef970-94db-49e3-9b6e-b3679ece57d6-removebg-preview.png" alt="Profile Icon" class="h-16 w-16 rounded-full">
+                </a>
+
+                <!-- Notifications -->
+                <div class="relative">
+                    <button id="notification-btn" class="bg-gray-700 text-white p-2 rounded-full hover:bg-gray-600">
+                        <svg xmlns="https://cf-vectorizer-live.s3.amazonaws.com/uploads/2nM3pmfskgYQog1hNaBah0jEnwk/2nM3vWR3qwcRdlUxbvTHC7YJh8o.png" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                            <path d="M160-200v-80h80v-280q0-83 50-147.5T420-792v-28q0-25 17.5-42.5T480-880q25 0 42.5 17.5T540-820v28q80 20 130 84.5T720-560v280h80v80H160Zm320-300Zm0 420q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-280h320v-280q0-66-47-113t-113-47q-66 0-113 47t-47 113v280Z"/>
+                        </svg>
+                    </button>
+    
+                    <div id="notification-dropdown" style="display: none; position: absolute; right: 0; top: 50px; background-color: white; width: 300px; max-height: 400px; overflow-y: scroll; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                        <div class="notification-item p-4 border-b border-gray-200">
+                            <strong>Nuevo mensaje</strong>: Has recibido un mensaje nuevo de Juan.
+                        </div>
+                        <div class="notification-item p-4 border-b border-gray-200">
+                            <strong>Compra exitosa</strong>: Tu compra de alimento para tarántulas fue completada.
+                        </div>
+                        <div class="notification-item p-4 border-b border-gray-200">
+                            <strong>Notificación general</strong>: Hay una nueva actualización en la sección de foros.
+                        </div>
+                        <div class="notification-item p-4 border-b border-gray-200">
+                            <strong>Nuevo mensaje</strong>: María te ha enviado un mensaje.
+                        </div>
+                        <div class="notification-item p-4">
+                            <strong>Compra exitosa</strong>: Se ha confirmado la compra de un terrario.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Marketplace Link -->
+                <a href="marketplace.html" class="hover:text-yellow-400">Marketplace</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Perfil Section -->
+    <section class="py-8">
+        <div class="container mx-auto">
+            <div class="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    <!-- Foto de Perfil -->
+                    <div class="text-center md:col-span-1">
+                        <img src="https://i.pinimg.com/236x/44/67/b4/4467b4476454a9026ea16abf9f93de0c.jpg" alt="Avatar" class="rounded-full mx-auto mb-4">
+                    </div>
+                    <!-- Información de Usuario -->
+                    <div class="md:col-span-2">
+                        <h2 class="text-2xl font-bold">Deby.Granger93</h2>
+                        <p class="text-gray-600">Ciudad, País</p>
+                        <p><strong>Correo Electrónico:</strong> usuario@example.com</p>
+                        <p><strong>Teléfono:</strong> +1 (234) 567-890</p>
+                        <p><strong>Fecha de Nacimiento:</strong> 15 de enero de 1234</p>
+                        <h3 class="text-xl font-semibold mt-4">Biografía</h3>
+                        <p class="text-gray-700">Amante de los animales exóticos, especialmente artrópodos y reptiles. Me apasiona compartir conocimientos y aprender más sobre el mundo natural.</p>
+                    </div>
+                </div>
+
+                <!-- Chat -->
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4">Chat con el usuario</h3>
+                    <div id="chat-box" class="bg-gray-100 p-4 rounded-md">
+                    </div>
+
+                    <!-- para enviar mensajes -->
+                    <form id="chat-form" class="mt-4">
+                        <div class="flex">
+                            <input type="text" id="chat-input" class="flex-grow border border-gray-300 p-2 rounded-l-md" placeholder="Escribe un mensaje..." required>
+                            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-r-md hover:bg-blue-400">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Publicaciones -->
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4">Publicaciones Recientes</h3>
+                    <div class="bg-gray-100 p-4 rounded-md">
+                        <p><strong>Titulo:</strong> Mi experienciacon mi nuevo bebe</p>
+                        <p class="text-gray-700">Descubre cómo cuido a mis geckos y las mejores prácticas...</p>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-md mt-4">
+                        <p><strong>Titulo:</strong> Hábitat ideal para geckos </p>
+                        <p class="text-gray-700">Aquí te cuento cómo crear un entorno perfecto para tus geckos...</p>
+                    </div>
+                </div>
+
+                <!-- Imágenes Subidas -->
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4">Imágenes Subidas</h3>
+                    <div class="grid grid-cols-4 gap-4">
+                        <img src="https://i.pinimg.com/236x/ba/eb/91/baeb9183ddeecc2b193318cb9c35ba82.jpg" alt="Imagen 1" class="rounded-md">
+                        <img src="https://i.pinimg.com/236x/e2/c2/0f/e2c20f6fa4ab743b089a9e8b0fae745b.jpg" alt="Imagen 2" class="rounded-md">
+                        <img src="https://i.pinimg.com/236x/2e/45/63/2e4563f96b17c5182c2d61dbf2c9063d.jpg" alt="Imagen 3" class="rounded-md">
+                        <img src="https://i.pinimg.com/236x/cc/96/a2/cc96a23b46bf98130bbc67dfe1a95d1b.jpg" alt="Imagen 4" class="rounded-md">
+                    </div>
+                </div>
+
+                <!-- Foro -->
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4">Participaciones en el Foro</h3>
+                    <div class="bg-gray-100 p-4 rounded-md">
+                        <p><strong>Discusión:</strong> Alimentación adecuada para reptiles exóticos</p>
+                        <p class="text-gray-700">Me encanta cómo han recomendado diferentes tipos de insectos...</p>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-md mt-4">
+                        <p><strong>Discusión:</strong> Consejos para construir terrarios personalizados</p>
+                        <p class="text-gray-700">Construí mi propio terrario y estoy encantado de compartir los detalles...</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Exopets. All rights reserved.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="about.html" class="hover:text-yellow-400">About Us</a>
+                <a href="contact.html" class="hover:text-yellow-400">Contact</a>
+                <a href="privacy.html" class="hover:text-yellow-400">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatBox = document.getElementById('chat-box');
+
+        // Función para agregar un mensaje al chat
+        function addMessage(message, type) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message');
+            if (type === 'user') {
+                messageElement.classList.add('user-message');
+            } else {
+                messageElement.classList.add('received-message');
+            }
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight; // Desplazar el chat hacia abajo
+        }
+
+        // Manejar el envío del formulario
+        chatForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+            const message = chatInput.value;
+            if (message.trim() !== '') {
+                addMessage(message, 'user'); // Agregar el mensaje enviado por el usuario
+                chatInput.value = ''; // Limpiar el campo de entrada
+            }
+        });
+
+    // Mostrar/ocultar dropdown de notificaciones
+    const notificationBtn = document.getElementById('notification-btn');
+    const notificationDropdown = document.getElementById('notification-dropdown');
+
+    notificationBtn.addEventListener('click', function() {
+        if (notificationDropdown.style.display === 'none') {
+            notificationDropdown.style.display = 'block';
+        } else {
+            notificationDropdown.style.display = 'none';
+        }
+    });
+
+    // Cerrar el dropdown si se hace clic fuera de él
+    window.addEventListener('click', function(event) {
+        if (!notificationBtn.contains(event.target) && !notificationDropdown.contains(event.target)) {
+            notificationDropdown.style.display = 'none';
+        }
+    });
+
+    </script>
+</body>
+</html>
+
