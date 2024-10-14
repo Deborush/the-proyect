@@ -30,7 +30,6 @@
                         </svg>
                     </button>
     
-                    <!-- Dropdown de Notificaciones -->
                     <div id="notification-dropdown" style="display: none; position: absolute; right: 0; top: 50px; background-color: white; width: 300px; max-height: 400px; overflow-y: scroll; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                         <div class="notification-item p-4 border-b border-gray-200">
                             <strong>Nuevo mensaje</strong>: Has recibido un mensaje nuevo de Juan.
@@ -67,7 +66,7 @@
             <h2 class="text-2xl font-semibold mb-4">Sobre Nosotros</h2>
             <div class="flex flex-wrap justify-center space-x-4">
                 <div class="bg-white p-6 rounded-lg shadow-lg w-60">
-                    <img src="img/Imagen de WhatsApp 2024-10-11 a las 12.47.44_e0ed1c23.jpg" alt="Miembro del equipo 1" class="mb-4 rounded-full w-32 h-32 mx-auto">
+                    <img src="https://cf-vectorizer-live.s3.amazonaws.com/uploads/2nM3pmfskgYQog1hNaBah0jEnwk/2nP2U4jTlQWKhg51Q6FSwNUxtPB.jpeg" alt="Miembro del equipo 1" class="mb-4 rounded-full w-32 h-32 mx-auto">
                     <h3 class="text-xl font-semibold">Debora Sáncez</h3>
                     <p class="text-gray-600">Fanatica de los animales exoticos</p>
                 </div>
@@ -108,8 +107,7 @@
                         notificationDropdown.style.display = 'none';
                     }
                 });
-
-                // Cerrar el dropdown si se hace clic fuera de él
+                
                 window.addEventListener('click', function(event) {
                     if (!notificationBtn.contains(event.target) && !notificationDropdown.contains(event.target)) {
                         notificationDropdown.style.display = 'none';
